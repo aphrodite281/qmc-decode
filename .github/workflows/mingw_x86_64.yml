@@ -27,22 +27,22 @@ jobs:
             linux_x64
 
       - name: 🗜️ Archive Binaries
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: binaries
           path: build/bin
 
-      - name: 📝 Draft Release
-        if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          body: "<to be filled>"
-          draft: true
-          # note you'll typically need to create a personal access token
-          # with permissions to create releases in the other repo
-          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
-          files: |
-            build/bin/*.tar.gz
-            build/bin/*.zip
+      # - name: 📝 Draft Release
+      #   if: startsWith(github.ref, 'refs/tags/v')
+      #   uses: softprops/action-gh-release@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     body: "<to be filled>"
+      #     draft: true
+      #     # note you'll typically need to create a personal access token
+      #     # with permissions to create releases in the other repo
+      #     token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+      #     files: |
+      #       build/bin/*.tar.gz
+      #       build/bin/*.zip
